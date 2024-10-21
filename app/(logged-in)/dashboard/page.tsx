@@ -33,6 +33,11 @@ export default async function Dashboard() {
   if (user) {
     //update the user_id in users table
     userId = clerkUser?.id;
+    if (!clerkUser?.id) {
+      console.error("User ID is undefined");
+      return redirect("/sign-in");
+    }
+    
     if (userId) {
       await updateUser(sql, userId, email);
     }
@@ -40,8 +45,12 @@ export default async function Dashboard() {
     priceId = user[0].price_id;
   }
 
-  const { id: planTypeId = "starter", name: planTypeName } =
-    getPlanType(priceId);
+  const planType = getPlanType(priceId) || {};
+const { id: planTypeId = "starter", name: planTypeName = "Starter" } = planType;
+
+
+  // const { id: planTypeId = "starter", name: planTypeName } =
+  //   getPlanType(priceId);
 
   const isBasicPlan = planTypeId === "basic";
   const isProPlan = planTypeId === "pro";

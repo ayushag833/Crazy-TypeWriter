@@ -28,4 +28,4 @@ export const plansMap = [
 export const ORIGIN_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://crazytypewriter.vercel.app";
+    : "https://crazy-type-writer.vercel.app/";
