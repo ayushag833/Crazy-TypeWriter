@@ -5,10 +5,10 @@ export const plansMap = [
     description: "Get started with Crazy TypeWriter!",
     price: "10",
     items: ["3 Blog Posts", "3 Transcription"],
-    paymentLink: "https://buy.stripe.com/test_aEU9D35X65fH0MMeUW",
+    paymentLink: "https://buy.stripe.com/test_7sIaIbd6O6Se3HW289",
     priceId:
       process.env.NODE_ENV === "development"
-        ? "price_1PtLVqBPnsISnc82CW4au1uq"
+        ? "price_1Q9YA705F9BoM8qAOmJdXBD7"
         : "",
   },
   {
@@ -17,10 +17,10 @@ export const plansMap = [
     description: "All Blog Posts, let’s go!",
     price: "19.99",
     items: ["Unlimited Blog Posts", "Unlimited Transcriptions"],
-    paymentLink: "https://buy.stripe.com/test_cN26qRclufUl9jibIL",
+    paymentLink: "https://buy.stripe.com/test_bIY9E7gj0dgC2DS4gi",
     priceId:
       process.env.NODE_ENV === "development"
-        ? "price_1PtLVqBPnsISnc82bspCVu5e"
+        ? "price_1Q9YBU05F9BoM8qAo4jLrbZ6"
         : "",
   },
 ];
