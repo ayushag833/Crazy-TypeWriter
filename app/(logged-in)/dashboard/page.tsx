@@ -13,14 +13,17 @@ import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
+  console.log("Check1")
   const clerkUser = await currentUser();
+  console.log("Check2")
 
   if (!clerkUser) {
     return redirect("/sign-in");
   }
+  console.log("Check3")
 
   const email = clerkUser?.emailAddresses?.[0].emailAddress ?? "";
-
+  console.log("Check4")
   const sql = await getDbConnection();
 
   console.log("Clerk User ---> ",clerkUser)
