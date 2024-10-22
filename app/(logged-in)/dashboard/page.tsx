@@ -23,6 +23,9 @@ export default async function Dashboard() {
 
   const sql = await getDbConnection();
 
+  console.log("Clerk User ---> ",clerkUser)
+  console.log("Email ---> ",email)
+
   //updatethe user id
   let userId = null;
   let priceId = null;
