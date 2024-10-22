@@ -8,7 +8,7 @@ export default function Page() {
       <BgGradient>
         <SignUp />
       </BgGradient>
-      <Image src="/nature2.jpg" 
+      <Image src="https://images.pexels.com/photos/312839/pexels-photo-312839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
        width={500}
        height={500}
        alt="Study Picture"

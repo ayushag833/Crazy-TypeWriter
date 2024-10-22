@@ -8,7 +8,7 @@ export default function Page() {
       <BgGradient>
         <SignIn />
       </BgGradient>
-      <Image src="/nature1.jpg" 
+      <Image src="https://images.pexels.com/photos/33582/sunrise-phu-quoc-island-ocean.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
        width={500}
        height={500}
        alt="Study Picture"
