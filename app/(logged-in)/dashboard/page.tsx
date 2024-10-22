@@ -22,15 +22,12 @@ export default async function Dashboard() {
   const email = clerkUser?.emailAddresses?.[0].emailAddress ?? "";
   const sql = await getDbConnection();
 
-  console.log("Email ---> ",email)
-
   //updatethe user id 
   let userId = null;
   let priceId = null;
 
   const hasUserCancelled = await hasCancelledSubscription(sql, email);
   const user = await doesUserExist(sql, email);
-  console.log("doesUserExist? ---> ",user)
 
   if (user) {
     //update the user_id in users table
@@ -46,9 +43,8 @@ export default async function Dashboard() {
 
     priceId = user[0].price_id;
   }
-
-  const planType = getPlanType(priceId) || {};
   console.log("priceId ---> ",priceId)
+  const planType = getPlanType(priceId) || {};
   console.log("planType ---> ",planType)
 const { id: planTypeId = "starter", name: planTypeName = "Starter" } = planType;
 
