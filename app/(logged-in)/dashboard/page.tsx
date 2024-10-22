@@ -73,7 +73,7 @@ const { id: planTypeId = "starter", name: planTypeName = "Starter" } = planType;
           </h2>
 
           <p className="mt-2 text-lg leading-8 text-gray-600 max-w-2xl text-center">
-            Upload your audio or video file and let our AI do the magic!
+            Upload your audio file and let our AI do the magic!
           </p>
 
           {(isBasicPlan || isProPlan) && (

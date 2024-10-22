@@ -27,7 +27,7 @@ export default function HowItWorks() {
       <div className="flex items-center justify-center gap-4 lg:gap-24">
         <div className="flex flex-col gap-4">
           <p className="text-7xl text-center">🎥</p>
-          <p className="text-center font-medium">Upload a Video</p>
+          <p className="text-center font-medium">Upload a Audio</p>
         </div>
         <MoveRight size={64} strokeWidth={0.5} className="text-purple-500" />
         <div className="flex flex-col gap-4">

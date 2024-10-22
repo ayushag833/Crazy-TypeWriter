@@ -3,10 +3,12 @@ import getDbConnection from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import OpenAI from "openai";
+import { AssemblyAI } from 'assemblyai'
+import { GoogleGenerativeAI } from "@google/generative-ai"
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const client = new AssemblyAI({
+  apiKey: process.env.ASSEMBLY_API_KEY!
+})
 
 export async function transcribeUploadedFile(
   resp: {
@@ -36,19 +38,16 @@ export async function transcribeUploadedFile(
     };
   }
 
-  const response = await fetch(fileUrl);
+  const config = {
+    audio_url: fileUrl
+  }
 
   try {
-    const transcriptions = await openai.audio.transcriptions.create({
-      model: "whisper-1",
-      file: response,
-    });
-
-    console.log({ transcriptions });
+    const transcriptions = await client.transcripts.transcribe(config)
     return {
       success: true,
       message: "File uploaded successfully!",
-      data: { transcriptions, userId },
+      data: { transcriptions:transcriptions.text, userId },
     };
   } catch (error) {
     console.error("Error processing file", error);
@@ -107,20 +106,10 @@ async function generateBlogPost({
   transcriptions: string;
   userPosts: string;
 }) {
-  const completion = await openai.chat.completions.create({
-    messages: [
-      {
-        role: "system",
-        content:
-          "You are a skilled content writer that converts audio transcriptions into well-structured, engaging blog posts in Markdown format. Create a comprehensive blog post with a catchy title, introduction, main body with multiple sections, and a conclusion. Analyze the user's writing style from their previous posts and emulate their tone and style in the new post. Keep the tone casual and professional.",
-      },
-      {
-        role: "user",
-        content: `Here are some of my previous blog posts for reference:
-
-${userPosts}
-
-Please convert the following transcription into a well-structured blog post using Markdown formatting. Follow this structure:
+  
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const prompt = `Please convert the following transcription :- ${transcriptions} into a well-structured blog post using Markdown formatting. Follow this structure:
 
 1. Start with a SEO friendly catchy title on the first line.
 2. Add two newlines after the title.
@@ -132,21 +121,17 @@ Please convert the following transcription into a well-structured blog post usin
 8. Ensure the content is informative, well-organized, and easy to read.
 9. Emulate my writing style, tone, and any recurring patterns you notice from my previous posts.
 
-Here's the transcription to convert: ${transcriptions}`,
-      },
-    ],
-    model: "gpt-4o-mini",
-    temperature: 0.7,
-    max_tokens: 1000,
-  });
-
-  return completion.choices[0].message.content;
+You can also look out for similiar posts :- ${userPosts}`;
+  
+  const result = await model.generateContent(prompt);
+  return result.response.text()
 }
+
 export async function generateBlogPostAction({
   transcriptions,
   userId,
 }: {
-  transcriptions: { text: string };
+  transcriptions: any;
   userId: string;
 }) {
   const userPosts = await getUserBlogPosts(userId);
@@ -155,7 +140,7 @@ export async function generateBlogPostAction({
 
   if (transcriptions) {
     const blogPost = await generateBlogPost({
-      transcriptions: transcriptions.text,
+      transcriptions,
       userPosts,
     });
 

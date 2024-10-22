@@ -13,7 +13,7 @@ export default function Banner() {
         blog posts
       </h1>
       <h2 className=" text-center px-4 lg:px-0 lg:max-w-4xl">
-        Convert your video or voice into a Blog Post in seconds with the power
+        Convert your voice into a Blog Post in seconds with the power
         of AI!
       </h2>
 

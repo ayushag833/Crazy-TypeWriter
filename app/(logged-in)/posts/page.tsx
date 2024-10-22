@@ -24,7 +24,7 @@ export default async function Page() {
       {posts.length === 0 && (
         <div>
           <p className="text-gray-600 text-lg lg:text-xl mb-4 line-clamp-3">
-            You have no posts yet. Upload a video or audio to get started.
+            You have no posts yet. Upload a audio to get started.
           </p>
           <Link
             href={`/dashboard`}
@@ -40,7 +40,7 @@ export default async function Page() {
           <BgGradient key={post.id}>
             <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
               <h3 className="text-xl font-semibold text-gray-800 mb-2 truncate">
-                {post.title}
+                {post.title.split("#").slice(2).join(" ")}
               </h3>
               <p className="text-gray-600 text-sm mb-4 line-clamp-3">
                 {post.content.split("\n").slice(1).join("\n")}

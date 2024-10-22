@@ -19,15 +19,15 @@ const schema = z.object({
     )
     .refine(
       (file) =>
-        file.type.startsWith("audio/") || file.type.startsWith("video/"),
-      "File must be an audio or a video file"
+        file.type.startsWith("audio/"),
+      "File must be an audio or a audio file"
     ),
 });
 
 export default function UploadForm() {
   const { toast } = useToast();
 
-  const { startUpload } = useUploadThing("videoOrAudioUploader", {
+  const { startUpload } = useUploadThing("audioUploader", {
     onClientUploadComplete: () => {
       toast({ title: "uploaded successfully!" });
     },
@@ -112,7 +112,7 @@ export default function UploadForm() {
           id="file"
           name="file"
           type="file"
-          accept="audio/*,video/*"
+          accept="audio/*"
           required
         />
         <Button className="bg-purple-600">Transcribe</Button>

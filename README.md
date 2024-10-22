@@ -1,7 +1,6 @@
-# Crazy TypeWriter - Convert your video or voice into a Blog Post in seconds with the power of AI!
+# Crazy TypeWriter - Convert your voice into a Blog Post in seconds with the power of AI!
 
 Built with the Next.js 14 App Router, Clerk for Auth - with Passkeys, Github and Google Sign in, React, OpenAI - Whisper API, ShadCN UI library for components, React Markdown, NeonDb, UploadThing, Stripe for payments, Webhooks, TypeScript, TailwindCSS and more.
-
 
 ## Features
 
@@ -12,7 +11,7 @@ Built with the Next.js 14 App Router, Clerk for Auth - with Passkeys, Github and
 - 💳 Stripe integration for payments and subscription management
 - 💾 NeonDb for database management
 - 📤 UploadThing for file uploads
-- 🎙️ Audio and video file processing (up to 25MB)
+- 🎙️ Audio file processing (up to 25MB)
 - 📜 TypeScript for type safety
 - 💅 TailwindCSS for styling
 - 🎨 ShadCN UI library for beautiful components
@@ -23,7 +22,7 @@ Built with the Next.js 14 App Router, Clerk for Auth - with Passkeys, Github and
 - 🖋️ Markdown editor for blog post editing
 - 📱 Responsive design for mobile and desktop
 - 🔄 Real-time updates and path revalidation
-- 🚀 Deployment-ready (likely for Vercel)
+- 🚀 Deployment-ready
 - 🔔 Toast notifications for user feedback
 - 📈 Performance optimizations
 - 🔍 SEO-friendly blog post generation

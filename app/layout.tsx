@@ -16,7 +16,7 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Crazy TypeWriter",
   description:
-    "Convert your video or voice into a Blog Post in seconds with the power of AI!",
+    "Convert your audio into a Blog Post in seconds with the power of AI!",
   icons: {
     icon: "/icon.ico",
   },
