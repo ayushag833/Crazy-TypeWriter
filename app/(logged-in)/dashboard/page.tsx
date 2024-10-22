@@ -48,6 +48,7 @@ export default async function Dashboard() {
   }
 
   const planType = getPlanType(priceId) || {};
+  console.log("priceId ---> ",priceId)
   console.log("planType ---> ",planType)
 const { id: planTypeId = "starter", name: planTypeName = "Starter" } = planType;
 
